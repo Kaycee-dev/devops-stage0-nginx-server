@@ -1,12 +1,28 @@
-# DevOps Stage 0 Project Repo
+# DevOps Stage 0 — Kelechi Uba
 
-This repository is the GitHub-facing project repo for the HNG DevOps Track Stage 0 task. Local execution instructions, sprint prompts, proof journals, and agent assets stay untracked in the working directory.
+HNG DevOps Track Stage 0: hardened Linux server with Nginx, UFW, and Let's Encrypt.
 
-Current Day 1 repo state:
+## Live Deployment
 
-- git initialized on `main`
-- `origin` set to `https://github.com/Kaycee-dev/devops-stage0-nginx-server.git`
-- local Day 1 planning and proof artifacts are present but intentionally untracked
-- live provider access, domain control, exact HNG username, and checker public SSH key are still pending
+| Field | Value |
+|---|---|
+| Domain | https://kelechiuba.duckdns.org |
+| Server IP | 34.76.24.38 |
+| Provider | GCP (europe-west1-b) |
+| OS | Ubuntu 22.04.5 LTS |
+| HNG username | Kelechi Uba |
 
-Tracked files in this repo are intentionally limited to the project-facing surface. Local-only operational material is excluded via `.gitignore`.
+## Endpoints
+
+- `GET /` — HTML page with username visible as page text
+- `GET /api` — JSON: `{"message":"HNGI14 Stage 0","track":"DevOps","username":"Kelechi Uba"}`
+
+## Server Hardening
+
+- Non-root operator user: `hngdevops`
+- Passwordless sudo scoped to `/usr/sbin/sshd` and `/usr/sbin/ufw` only
+- Root SSH login disabled
+- Password-based SSH authentication disabled
+- UFW active: ports 22, 80, 443 only
+- Let's Encrypt TLS certificate (valid until 2026-07-12)
+- HTTP → HTTPS 301 redirect

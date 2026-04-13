@@ -1,0 +1,50 @@
+packet_id: d0-hardening-20260411-01
+day: Day 1-Day 2
+lane_type: hardening
+objective: >
+  Leave the server reachable by key while creating hngdevops, installing the required sudoers rule, disabling root login, disabling password authentication, and activating the required firewall posture.
+scope_in:
+  - server user management
+  - sudoers
+  - sshd_config
+  - ufw policy
+scope_out:
+  - Nginx response behavior
+  - TLS issuance
+repo_root: <target-root>
+worktree:
+  path: <target-root>
+  branch: main
+primary_surface: mixed
+required_reads:
+  - AGENTS.md
+  - devops-stage0-sprint_v1_0.md
+  - docs/devops-stage0-sprint/00_server_hardening_plan.md
+inputs:
+  - provisioning facts
+deliverables:
+  - hardened SSH state
+  - active UFW posture
+verification:
+  commands:
+    - sudo /usr/sbin/sshd -T
+    - sudo /usr/sbin/ufw status
+  manual_proofs:
+    - confirm key-based access still works after hardening
+green_level: gate_green
+evidence_updates:
+  - docs/devops-stage0-sprint/07_progress_tracker.md
+  - docs/devops-stage0-sprint/08_evidence_log.md
+  - docs/devops-stage0-sprint/09_decisions_log.md
+  - docs/devops-stage0-proof/01_raw_journal/2026-04-11_day_1.md
+escalate_when:
+  - safe access may be lost
+  - the checker key or domain is missing and blocks required verification
+closeout_contract:
+  must_report:
+    - summary
+    - files changed
+    - checks run
+    - blocker status
+    - next exact starting point
+    - next handoff point

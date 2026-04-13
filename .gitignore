@@ -6,4 +6,8 @@ AGENTS.md
 devops-stage0-sprint_v1_0.md
 devops-stage0-hardening-sprint_v1_0.md
 devops-stage0-proof-sprint_v1_0.md
-docs/
+
+# Agent prompt files
+hng_devops_stage0_gemini_sprint_prompt.md
+hng_stage0_gemini_prompt_v2.md
+hng_stage0_gemini_prompt_v3.md
