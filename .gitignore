@@ -11,3 +11,7 @@ devops-stage0-proof-sprint_v1_0.md
 hng_devops_stage0_gemini_sprint_prompt.md
 hng_stage0_gemini_prompt_v2.md
 hng_stage0_gemini_prompt_v3.md
+
+# Local-only guardrails and working files
+docs/
+server_configuration_commands.md
